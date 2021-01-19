@@ -2,6 +2,7 @@
 # Test Processing II  #
 #######################
 
+num2str = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
 def digits_to_words(input_string):
     """
@@ -28,9 +29,8 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    digit_string = " ".join([num2str[int(c)] for c in input_string if c.isdigit() == True])
     return digit_string
-
 
 """
 컴퓨터 프로그래밍에 많은 명명 규칙이 있지만, 두 규칙이 특히 흔히 쓰입니다. 
@@ -38,7 +38,6 @@ def digits_to_words(input_string):
 두번째로는, 변수 이름을 대소문자 구별해 구분자 (delimiter)없이 쓰는 경우가 있습니다. 
 이 두번째의 경우에는 첫번째 단어는 소문자로, 그 후에 오는 단어들의 첫번째 글자들은 대문자로 쓰입니다 (ex. camelCaseVariable). 
 """
-
 
 def to_camel_case(underscore_str):
     """
@@ -64,5 +63,15 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    camelcase_str = ""
+    str_list = underscore_str.split('_')
+    if len(str_list) == 1:
+        return str_list[0]
+
+    for s in str_list:
+        if s != '':
+            if camelcase_str == "":
+                camelcase_str += s.lower()
+            else:
+                camelcase_str += s.capitalize()
     return camelcase_str
