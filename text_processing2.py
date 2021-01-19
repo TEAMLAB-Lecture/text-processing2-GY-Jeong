@@ -65,12 +65,15 @@ def to_camel_case(underscore_str):
     """
     camelcase_str = ""
     str_list = underscore_str.split('_')
+    if len(str_list) == 1:
+        return str_list[0]
+
     for s in str_list:
         if s != '':
             if camelcase_str == "":
                 camelcase_str += s.lower()
             else:
-                lower_s = s.lower()
+                lower_s = s.lower()s
                 camelcase_str += lower_s[0].upper()
                 camelcase_str += lower_s[1:]
     return camelcase_str
