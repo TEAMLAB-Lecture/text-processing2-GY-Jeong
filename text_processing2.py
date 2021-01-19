@@ -2,6 +2,7 @@
 # Test Processing II  #
 #######################
 
+num2str = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
 
 def digits_to_words(input_string):
     """
@@ -28,9 +29,8 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    digit_string = " ".join([num2str[int(c)] for c in input_string if c.isdigit() == True])
     return digit_string
-
 
 """
 컴퓨터 프로그래밍에 많은 명명 규칙이 있지만, 두 규칙이 특히 흔히 쓰입니다. 
@@ -64,5 +64,13 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    camelcase_str = ""
+    str_list = underscore_str.split('_')
+    for idx, s in enumerate(str_list):
+        if idx == 0:
+            camelcase_str += s.lower()
+        else:
+            lower_s = s.lower()
+            camelcase_str += lower_s[0].upper()
+            camelcase_str += lower_s[1:]
     return camelcase_str
