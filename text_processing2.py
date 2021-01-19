@@ -39,7 +39,6 @@ def digits_to_words(input_string):
 이 두번째의 경우에는 첫번째 단어는 소문자로, 그 후에 오는 단어들의 첫번째 글자들은 대문자로 쓰입니다 (ex. camelCaseVariable). 
 """
 
-
 def to_camel_case(underscore_str):
     """
     이 문제에서 첫번째 규칙 'underscore variable' 에서 두번째 규칙 'camelcase variable'으로 변환함
@@ -66,11 +65,12 @@ def to_camel_case(underscore_str):
     """
     camelcase_str = ""
     str_list = underscore_str.split('_')
-    for idx, s in enumerate(str_list):
-        if idx == 0:
-            camelcase_str += s.lower()
-        else:
-            lower_s = s.lower()
-            camelcase_str += lower_s[0].upper()
-            camelcase_str += lower_s[1:]
+    for s in str_list:
+        if s != '':
+            if camelcase_str == "":
+                camelcase_str += s.lower()
+            else:
+                lower_s = s.lower()
+                camelcase_str += lower_s[0].upper()
+                camelcase_str += lower_s[1:]
     return camelcase_str
